@@ -1,6 +1,5 @@
 import os
 import pygame
-import random
 import neat
 from classes.Chao import Chao
 from classes.Cano import Cano
@@ -98,13 +97,14 @@ def main(genomas, config): # fitness function
             passaro.mover()
             
             # aumentar fitness do pássaro
-            lista_genomas[i].fitness += 0.1
+            if ai_jogando:
+                lista_genomas[i].fitness += 0.1
 
-            output = redes[i].activate((passaro.y, 
-                                        abs(passaro.y - canos[indice_cano].altura), 
-                                        abs(passaro.y - canos[indice_cano].pos_base)))
-            if output[0] > 0.5:
-                passaro.pular()
+                output = redes[i].activate((passaro.y, 
+                                            abs(passaro.y - canos[indice_cano].altura), 
+                                            abs(passaro.y - canos[indice_cano].pos_base)))
+                if output[0] > 0.5:
+                    passaro.pular()
 
         chao.mover()
 

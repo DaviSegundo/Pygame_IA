@@ -1,6 +1,5 @@
 import os
 import pygame
-import random
 
 IMAGEM_CHAO = pygame.transform.scale2x(pygame.image.load(os.path.join('imgs', 'base.png')))
 

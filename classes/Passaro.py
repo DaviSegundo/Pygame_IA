@@ -1,6 +1,6 @@
 import os
 import pygame
-import random
+
 
 IMAGENS_PASSARO = [
     pygame.transform.scale2x(pygame.image.load(os.path.join('imgs', 'bird1.png'))),
