@@ -45,7 +45,7 @@ class Passaro:
     def mover(self):
         # calcular o deslocamento
         self.tempo += 1
-        deslocamento = 1.5 * (self.tempo**2) + self.velocidade + self.tempo
+        deslocamento = 1.5 * (self.tempo**2) + self.velocidade * self.tempo
 
         # renstrigir o deslocamento
         if deslocamento > 16:
@@ -53,7 +53,7 @@ class Passaro:
         elif deslocamento < 0:
             deslocamento -= 2
 
-        self.y = deslocamento
+        self.y += deslocamento
 
         # ângulo do pássaro
         if deslocamento < 0 or self.y < (self.altura + 50):
@@ -175,6 +175,7 @@ def desenhar_tela(tela, passaros, canos, chao, pontos):
 
 
 def main():
+    # configurações iniciais do game
     passaros = [Passaro(230, 350)]
     chao = Chao(730)
     canos = [Cano(700)]
@@ -204,6 +205,7 @@ def main():
 
         chao.mover()
 
+        # Lógica dos canos no game
         adicionar_cano = False
         remover_canos = []
 
@@ -224,6 +226,7 @@ def main():
         for cano in remover_canos:
             canos.remove(cano)
 
+        # Matar o pássaro se ele passar da tela por cima ou por baixo
         for i, passaro in enumerate(passaros):
             if (passaro.y + passaro.imagem.get_height()) > chao.y or passaro.y < 0:
                 passaros.pop(i)
