@@ -86,6 +86,7 @@ def main(genomas, config): # fitness function
         # Lógica para mostrar a IA para qual distancia do cano ela deve olhar
         indice_cano = 0
         if len(passaros) > 0:
+            # Especifica que o pássaro passou do cano
             if len(canos) > 1 and passaros[0].x > ( canos[0].x + canos[0].CANO_TOPO.get_width()):
                 indice_cano = 1
         else:
